@@ -14,7 +14,9 @@ A simple Android application developed as part of a tutorial. This project demon
 
 ## Screenshots
 
-*(Add your screenshots here)*
+<p align="center">
+  <img src="screenshot.png" width="300" title="Main Screen">
+</p>
 
 ## Project Structure
 
