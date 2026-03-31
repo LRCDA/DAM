@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/expenseListFragment">
+
+    <fragment
+        android:id="@+id/expenseListFragment"
+        android:name="dam_a51472.agent_tp1.ui.list.ExpenseListFragment"
+        android:label="Finance Tracker"
+        tools:layout="@layout/fragment_expense_list">
+        <action
+            android:id="@+id/action_expenseListFragment_to_addEditExpenseFragment"
+            app:destination="@id/addEditExpenseFragment" />
+        <action
+            android:id="@+id/action_expenseListFragment_to_expenseSummaryFragment"
+            app:destination="@id/expenseSummaryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEditExpenseFragment"
+        android:name="dam_a51472.agent_tp1.ui.add_edit.AddEditExpenseFragment"
+        android:label="Expense Details"
+        tools:layout="@layout/fragment_add_edit_expense">
+        <argument
+            android:name="expenseId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/expenseSummaryFragment"
+        android:name="dam_a51472.agent_tp1.ui.summary.ExpenseSummaryFragment"
+        android:label="Summary"
+        tools:layout="@layout/fragment_expense_summary" />
+
+</navigation>
