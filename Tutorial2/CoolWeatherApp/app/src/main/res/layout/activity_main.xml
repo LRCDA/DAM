@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_light"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/botaoUpdate"
+        android:layout_width="149dp"
+        android:layout_height="63dp"
+        android:text="@string/bottom_update_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/complexInfo"
+        app:layout_constraintVertical_bias="0.529" />
+
+    <LinearLayout
+        android:id="@+id/complexInfo"
+        android:layout_width="352dp"
+        android:layout_height="380dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/basicInfo"
+        app:layout_constraintVertical_bias="0.221">
+
+        <LinearLayout
+            android:id="@+id/coordsWorldInfo"
+            android:layout_width="match_parent"
+            android:layout_height="127dp"
+            android:background="@drawable/rounded_bg"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/coordInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/latitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp">
+
+                    <TextView
+                        android:id="@+id/latitudeText"
+                        android:layout_width="166dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/latitude_text"
+                        android:textSize="20sp" />
+
+                    <FrameLayout
+                        android:id="@+id/division4"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent">
+
+                    </FrameLayout>
+
+                    <EditText
+                        android:id="@+id/latitude_coord"
+                        android:layout_width="160dp"
+                        android:layout_height="50dp"
+                        android:background="@color/orange"
+                        android:ems="10"
+                        android:hint='@string/latitude_hint'
+                        android:inputType="numberDecimal|numberSigned"
+                        android:text="@string/latitude_coord"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <Space
+                    android:id="@+id/div6"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp">
+
+                </Space>
+
+                <LinearLayout
+                    android:id="@+id/longitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/longitudeText"
+                        android:layout_width="166dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/longitude_text"
+                        android:textSize="20sp" />
+
+                    <FrameLayout
+                        android:id="@+id/div5"
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent">
+
+                    </FrameLayout>
+
+                    <EditText
+                        android:id="@+id/longitude_coord"
+                        android:layout_width="160dp"
+                        android:layout_height="50dp"
+                        android:background="@color/orange"
+                        android:ems="10"
+                        android:hint='@string/longitude_hint'
+                        android:inputType="numberDecimal|numberSigned"
+                        android:text="@string/longitude_coord"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/division"
+            android:layout_width="match_parent"
+            android:layout_height="7dp">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/otherInfo"
+            android:layout_width="match_parent"
+            android:layout_height="246dp"
+            android:background="@drawable/rounded_bg"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/randomInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/sunriseInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/sunriseText"
+                        android:layout_width="39dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/sunrise_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/sunriseValue"
+                        android:layout_width="43dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/sunrise_value" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sunsetInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/sunsetText"
+                        android:layout_width="73dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/sunset_text" />
+
+                    <TextView
+                        android:id="@+id/sunsetValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/sunset_value" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/humidityInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/humidityText"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/humidity_text" />
+
+                    <TextView
+                        android:id="@+id/humidityValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/humidity_value" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/apparentTempInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/apparentTempText"
+                        android:layout_width="83dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/apparentTemp_text" />
+
+                    <TextView
+                        android:id="@+id/apparentTempValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/apparentTemp_value" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/precipitationInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/precipitationText"
+                        android:layout_width="33dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/precipitation_text" />
+
+                    <TextView
+                        android:id="@+id/precipitationValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/precipitation_value" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/basicInfo"
+        android:layout_width="414dp"
+        android:layout_height="203dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/weatherIcon"
+            android:layout_width="match_parent"
+            android:layout_height="137dp"
+            android:contentDescription="@string/contentDescription_weatherIcon"
+            app:srcCompat="@drawable/mostly_cloudy" />
+
+        <LinearLayout
+            android:id="@+id/simpleInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/division2"
+                android:layout_width="20dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/weatherCode"
+                android:layout_width="175dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/weather_code"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                tools:background="@drawable/rounded_bg_lignt" />
+
+            <FrameLayout
+                android:id="@+id/division3"
+                android:layout_width="20dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="175dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_bg_lignt"
+                android:ems="10"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/temperature_text"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

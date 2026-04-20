@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme.-->
+    <style name="Theme.CoolWeatherAPP"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color.-->
+        <item name="colorPrimary">@color/darker_blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color.-->
+        <item name="colorSecondary">@color/blueish</item>
+        <item name="colorSecondaryVariant">@color/lighter_blue</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color.-->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here.-->
+        <item name="background">@color/lighter_blue</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Theme.Day" parent="Theme.CoolWeatherAPP">
+        <item name="android:windowBackground">@drawable/bg_light</item>
+    </style>
+    <style name="Theme.Day.Land" parent="Theme.CoolWeatherAPP">
+        <item name="android:windowBackground">@drawable/bg_light_land</item>
+    </style>
+    <style name="Theme.Night" parent="Theme.CoolWeatherAPP">
+        <item name="android:windowBackground">@drawable/bg_dark</item>
+    </style>
+    <style name="Theme.Night.Land" parent="Theme.CoolWeatherAPP">
+        <item name="android:windowBackground">@drawable/bg_dark_land</item>
+    </style>
+</resources>

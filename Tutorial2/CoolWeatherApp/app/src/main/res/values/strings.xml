@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Cool Weather APP</string>
+
+    <string name="contentDescription_weatherIcon">The icon of the current weather</string>
+    <string name="temperature_text" translatable="false">25 ºC</string>
+    <string name="weather_code">Cloudy</string>
+
+    <string name="bottom_update_text">Update</string>
+
+    <string name="latitude_text">Latitude</string>
+    <string name="latitude_coord" translatable="false">38.76</string>
+    <string name="latitude_hint">Latitude Coord</string>
+
+    <string name="longitude_text">Longitude</string>
+    <string name="longitude_coord" translatable="false">-9.12</string>
+    <string name="longitude_hint">Longitude Coord</string>
+
+
+    <string name="sunrise_text">Sunrise</string>
+    <string name="sunrise_value" translatable="false">06:50 AM</string>
+
+    <string name="sunset_text">Sunset</string>
+    <string name="sunset_value" translatable="false">08:17 PM</string>
+
+    <string name="humidity_text">Humidity</string>
+    <string name="humidity_value" translatable="false">62%</string>
+
+    <string name="apparentTemp_text">Apparent Temperature</string>
+    <string name="apparentTemp_value" translatable="false">21 ºC</string>
+
+    <string name="precipitation_text">Precipitation %</string>
+    <string name="precipitation_value" translatable="false">26%</string>
+
+
+
+</resources>
