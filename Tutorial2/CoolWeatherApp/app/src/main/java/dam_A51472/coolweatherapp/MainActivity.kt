@@ -16,13 +16,10 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.gson.Gson
 import java.io.InputStreamReader
 import java.net.URL
-import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.LocalTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Date
-import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -54,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Declarar a variável day
+        /*
         val day = true //mudar para false para testar tema noite
 
         when (resources.configuration.orientation) {
@@ -72,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        */
 
     }
 
@@ -79,6 +78,8 @@ class MainActivity : AppCompatActivity() {
         val reqString = buildString {
             append("https://api.open-meteo.com/v1/forecast?")
             append("latitude=${lat}&longitude=${long}&")
+            //Timezone
+            append("timezone=auto&") //Para obter a timezone
             //Daily
             append("daily=sunrise,sunset&")
             //Hourly
@@ -120,42 +121,45 @@ class MainActivity : AppCompatActivity() {
             val apparentTemp : TextView = findViewById(R.id.apparentTempValue)
             val precipitation: TextView = findViewById(R.id.precipitationValue)
             val humidity: TextView = findViewById(R.id.humidityValue)
-            val sunrise: TextView = findViewById(R.id.sunriseValue)
-            val sunset: TextView = findViewById(R.id.sunsetValue)
+            val sunriseView: TextView = findViewById(R.id.sunriseValue)
+            val sunsetView: TextView = findViewById(R.id.sunsetValue)
 
             // Preencher valores
             temperature.text = request.current.temperature_2m.toString() +"ºC"
             apparentTemp.text = request.current.apparent_temperature.toString()+"ºC"
             humidity.text = request.current.relative_humidity_2m.toString()+"%"
 
-            //Obter dia da semana e Horas do dia da semana: para sunrise, sunset e precipitation
-            val time = LocalDateTime.now() //Horas e data
+            //TimeZone
+            val zoneId = ZoneId.of(request.timezone)
+            val nowZone = ZonedDateTime.now(zoneId)
 
-            val formater1 = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            val dayIndex = request.daily.time.indexOf(time.format(formater1))
+            //Formatos
+            val formaterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val formaterHour = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:00")
+            val formaterAll = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
+            val formaterTime = DateTimeFormatter.ofPattern("HH:mm")
 
-            val formater2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:00")
-            val dateTimeIndex = request.hourly.time.indexOf(time.format(formater2))
+
+            //Índices
+            val dayIndex = request.daily.time.indexOf(nowZone.format(formaterDate))
+            val hourIndex = request.hourly.time.indexOf(nowZone.format(formaterHour))
+
+            //Parse
+            val sunriseDateTime = LocalDateTime.parse(request.daily.sunrise[dayIndex], formaterAll)
+            val sunsetDateTime = LocalDateTime.parse(request.daily.sunset[dayIndex], formaterAll)
+
+            val sunriseZone = sunriseDateTime.atZone(zoneId) //Ir buscar a data e tempo do sunrise numa dada zona.
+            val sunsetZone = sunsetDateTime.atZone(zoneId)
 
             //Preencher sunrise, sunset e precipitation
-            sunrise.text = request.daily.sunrise[dayIndex].substring(11,16)
-            sunset.text = request.daily.sunset[dayIndex].substring(11,16)
-            precipitation.text = request.hourly.precipitation_probability[dateTimeIndex].toString()+"%"
+            sunriseView.text = sunriseZone.format(formaterTime)
+            sunsetView.text = sunsetZone.format(formaterTime)
+            precipitation.text = request.hourly.precipitation_probability[hourIndex].toString()+"%"
 
+            //É dia?
+            val day = nowZone.isAfter(sunriseZone) && nowZone.isBefore(sunsetZone)
 
-            //Determinar dia, através de sunrise e sunset
-            //Obter horas sunset e sunrise
-            val sunrise_time = request.daily.sunrise[0].substring(11,16) //Horas entre o indice 11 e 15
-            val sunset_time = request.daily.sunset[0].substring(11,16)
-
-            val sunriseTime = LocalTime.parse(sunrise_time, DateTimeFormatter.ofPattern("HH:mm"))
-            val sunsetTime = LocalTime.parse(sunset_time, DateTimeFormatter.ofPattern("HH:mm"))
-
-            //determinar se é dia
-            val now = LocalTime.now()
-            val day = now.isAfter(sunriseTime) && now.isBefore(sunsetTime)
-
-
+            //Weather Code
             val mapt = getWeatherCodeMap();
             val wCode = mapt[request.current.weather_code]
 
@@ -169,6 +173,26 @@ class MainActivity : AppCompatActivity() {
                     else wCode?.image+"night"
                 else-> wCode?.image
             }
+
+            //Não funciona
+            when (resources.configuration.orientation) {
+                Configuration.ORIENTATION_PORTRAIT-> {
+                    if (day) {
+                        setTheme(R.style.Theme_Day)
+                    } else {
+                        setTheme(R.style.Theme_Night)
+                    }
+                }
+                Configuration.ORIENTATION_LANDSCAPE-> {
+                    if (day) {
+                        setTheme(R.style.Theme_Day_Land)
+                    } else {
+                        setTheme(R.style.Theme_Night_Land)
+                    }
+                }
+            }
+
+
 
             val res = resources
             weatherImage.setImageResource(R.drawable.fog)
