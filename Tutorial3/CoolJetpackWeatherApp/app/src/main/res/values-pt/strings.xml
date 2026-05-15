@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cool Jetpack Weather App</string>
+    <string name="weather_code">Neboloso</string>
+    <string name="bottom_update_text">Atualizar</string>
+    <string name="contentDescription_weatherIcon">O icon do tempo atual</string>
+    <string name="sunset_text">Pôr do Sol</string>
+    <string name="longitude_hint">Coordenada de longitude</string>
+    <string name="sunrise_text">Nascer do Sol</string>
+    <string name="precipitation_text">Precipitação</string>
+    <string name="latitude_hint">Coordenada de Latitude</string>
+    <string name="longitude_text">Longitude</string>
+    <string name="latitude_text">Latitude</string>
+    <string name="humidity_text">Humidade</string>
+    <string name="apparentTemp_text">Sensação térmica</string>
+</resources>
